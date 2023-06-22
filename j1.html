@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction_Tester</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #first{
+            background-color: rgb(21, 21, 33);
+            width: 500px;
+            height: 300px;
+            position:relative;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reaction_Tester</h1>
+    <p>Click on the box as soon as you see</p>
+    <div id="first"></div>
+    <script>
+        var start=new Date().getTime();
+        function getrandomcolor(){
+            var s="0123456789ABCDEF"
+            var colors="#"
+            for (var i=0 ; i<6;i++){
+                colors+=s[Math.floor(Math.random()*16)]
+            }
+            return colors;
+        }
+        function move(){
+            var left;
+            var top;
+            var wh;
+            left = (Math.random()*300);
+            top = (Math.random()*300);
+            wh =((Math.random()*400)+100);
+            document.getElementById("first").style.left=left+"px";
+            document.getElementById("first").style.top=top+"Px";
+            document.getElementById("first").style.width=wh+"px";
+            document.getElementById("first").style.height=wh+"px";
+            document.getElementById("first").style.display="block";
+            document.getElementById("first").style.backgroundColor=getrandomcolor();
+            start = new Date().getTime();
+        }
+        move();
+        document.getElementById("first").onclick = function()
+        {
+        document.getElementById("first").style.display="none";
+        var end=new Date().getTime();
+        var Timetaken=(end-start)/1000;
+        alert(Timetaken + "sec is your reaction time");
+        move();
+        }
+    </script>
+</body>
+</html>
